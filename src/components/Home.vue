@@ -1,9 +1,11 @@
 <template>
-
   <section class="src-components-home">
     <div class="jumbotron">
       <h2>Iniciando</h2>
       <hr>
+      <hr>
+      <br>
+
     </div>
   </section>
 
@@ -34,6 +36,9 @@
 </script>
 
 <style scoped lang="css">
+.src-components-home {
+
+}
   .jumbotron{
     background-color: rgb(30, 135, 233);
     color: black;
