@@ -36,9 +36,6 @@
 </script>
 
 <style scoped lang="css">
-.src-components-home {
-
-}
   .jumbotron{
     background-color: rgb(30, 135, 233);
     color: black;

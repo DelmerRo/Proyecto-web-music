@@ -10,34 +10,40 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-           
+
             <li class="nav-item">
-                  <router-link to="/home">
-                    <a class="nav-link" href="#">Home</a>
-                  </router-link>
-                </li>
+              <router-link to="/home">
+                <a class="nav-link" href="#">Home</a>
+              </router-link>
+            </li>
 
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Instrumentos
+              </a>
+
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li v-for="(t,index) in instruments" :key="index"><a class="dropdown-item" href="#">{{t.name}}</a></li>
+              </ul>
+
+
+
             </li>
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                Dropdown
+                Repertorio
               </a>
-              
+
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li v-for="(onetheme,index) in themes" :key="index"></li>
+                <router-link :to ="{name:'n-theme', params:{nomTema:onetheme.name}}"><a class="dropdown-item" href="#">{{onetheme.name}}</a></router-link>
               </ul>
-
-
-
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -61,36 +67,36 @@ export default {
   props: [],
   mounted() {
     this.getThemes(),
-    this.getInstruments()
+      this.getInstruments()
 
   },
   data() {
     return {
       url: 'https://63458d1c39ca915a690241be.mockapi.io/Themes',
-      themes:[],
+      themes: [],
       url2: 'https://63458d1c39ca915a690241be.mockapi.io/Instruments',
-      instruments:[]
+      instruments: []
     }
   },
   methods: {
-      async getThemes(){
-        try {
-          let {data:themes} = await this.axios(this.url)
-          console.log('Axios Get =>', themes )
-          this.themes = themes
-        } catch (error) {
-          console.error('No se pudo xd', error.message)
-        }
-      },
-      async getInstruments(){
-        try {
-          let {data:instruments} =await this.axios(this.url2)
-          console.log('Axios Get =>',instruments)
-          this.instruments = instruments
-        } catch (error) {
-          console.error('No se pudiste con el anterior podras con este xd', error.message)
-        }
+    async getThemes() {
+      try {
+        let { data: themes } = await this.axios(this.url)
+        console.log('Axios Get =>', themes)
+        this.themes = themes
+      } catch (error) {
+        console.error('No se pudo xd', error.message)
       }
+    },
+    async getInstruments() {
+      try {
+        let { data: instruments } = await this.axios(this.url2)
+        console.log('Axios Get =>', instruments)
+        this.instruments = instruments
+      } catch (error) {
+        console.error('No se pudiste con el anterior podras con este xd', error.message)
+      }
+    }
   },
   computed: {
 
@@ -101,6 +107,5 @@ export default {
 </script>
 
 <style scoped lang="css">
-.src-components-navbar {
-}
+
 </style>
