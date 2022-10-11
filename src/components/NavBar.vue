@@ -41,9 +41,11 @@
               </a>
 
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li v-for="(onetheme,index) in themes" :key="index"></li>
+                <li v-for="(onetheme,index) in themes" :key="index">
                 <router-link :to ="{name:'n-theme', params:{nomTema:onetheme.name}}"><a class="dropdown-item" href="#">{{onetheme.name}}</a></router-link>
+              </li>
               </ul>
+
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
